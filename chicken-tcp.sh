@@ -6,13 +6,7 @@
 # 	Chicken eggs: srfi-18, nrepl
 
 CHICKEN_PORT=1234
-MAX_ATTEMPTS=10
-SLEEP_TIME=0.5
 
 echo "Starting server ..."
-chicken-csi -R nrepl -P "(nrepl $CHICKEN_PORT)" & 
-sleep $SLEEP_TIME
+chicken-csi -R nrepl -P "(nrepl $CHICKEN_PORT)" &
 nc localhost $CHICKEN_PORT
-exit 0
-
-echo "Failed to connect to localhost at port $CHICKEN_PORT after multiple attempts." >&2
